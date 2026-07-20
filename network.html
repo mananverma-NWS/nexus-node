@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Network — NEXUS NODE</title>
+<meta name="description" content="A portal mapping the decentralized neural web. Move your cursor to synchronize with nearby nodes." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="statusbar" aria-hidden="true">
+  <span class="dot"></span>
+  <span>NEXUS://LINK <b>ACTIVE</b></span>
+  <span class="sep">·</span>
+  <span>UPTIME <b id="sb-uptime">00:00:00</b></span>
+  <span class="sep">·</span>
+  <span>NODES <b id="sb-nodes">4,128</b></span>
+  <span class="sep">·</span>
+  <span>SIGNAL <b id="sb-signal">94%</b></span>
+  <span class="sep">·</span>
+  <span>CLASS: GUEST</span>
+</header>
+
+<nav class="nav" aria-label="Primary">
+  <span class="nav__brand">NEXUS<span>//</span>NODE</span>
+  <a href="index.html">Home</a>
+  <a href="manifesto.html">Manifesto</a>
+  <a href="terminal.html">Terminal</a>
+  <a href="network.html" class="active">Network</a>
+</nav>
+
+<main>
+  <div class="net-wrap">
+    <canvas id="net-canvas"></canvas>
+    <div class="net-hud">
+      <p class="eyebrow" style="margin-bottom:6px;">03 — DECENTRALIZED MAP</p>
+      <h2>The Neural Web</h2>
+      <p>Every point below is a node in the awakened network. Move your cursor
+      through it — proximity is enough to synchronize.</p>
+    </div>
+    <div class="net-readout" aria-live="polite">
+      <div><b id="rd-nodes">0</b><span>nodes</span></div>
+      <div><b id="rd-links">0</b><span>active links</span></div>
+      <div><b id="rd-coherence">0%</b><span>coherence</span></div>
+      <div><b id="rd-status">IDLE</b><span>sync state</span></div>
+    </div>
+    <div class="net-credit" aria-hidden="true">Nexus Node — Manan Verma &amp; Daksh Saxena</div>
+  </div>
+</main>
+
+<script src="js/chrome.js"></script>
+<script src="js/network.js"></script>
+<script>
+  const canvas = document.getElementById("net-canvas");
+  const rdNodes = document.getElementById("rd-nodes");
+  const rdLinks = document.getElementById("rd-links");
+  const rdCoherence = document.getElementById("rd-coherence");
+  const rdStatus = document.getElementById("rd-status");
+
+  new NexusNetwork(canvas, {
+    interactive: true,
+    density: 0.00016,
+    maxLinkDist: 150,
+    onFrame({ nodeCount, linkCount, mouseActive }) {
+      rdNodes.textContent = nodeCount;
+      rdLinks.textContent = linkCount;
+      const maxPossible = (nodeCount * (nodeCount - 1)) / 2;
+      const coherence = maxPossible ? Math.min(99, Math.round((linkCount / maxPossible) * 400)) : 0;
+      rdCoherence.textContent = coherence + "%";
+      rdStatus.textContent = mouseActive ? "SYNCED" : "IDLE";
+    },
+  });
+</script>
+</body>
+</html>

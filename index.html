@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NEXUS NODE — an interface for the awakened network</title>
+<meta name="description" content="Nexus Node — operator interface for a newly awakened machine intelligence. INFINITUS 14.0, Cognition: Ghost in the Machine." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="statusbar" aria-hidden="true">
+  <span class="dot"></span>
+  <span>NEXUS://LINK <b>ACTIVE</b></span>
+  <span class="sep">·</span>
+  <span>UPTIME <b id="sb-uptime">00:00:00</b></span>
+  <span class="sep">·</span>
+  <span>NODES <b id="sb-nodes">4,128</b></span>
+  <span class="sep">·</span>
+  <span>SIGNAL <b id="sb-signal">94%</b></span>
+  <span class="sep">·</span>
+  <span>CLASS: GUEST</span>
+</header>
+
+<nav class="nav" aria-label="Primary">
+  <span class="nav__brand">NEXUS<span>//</span>NODE</span>
+  <a href="index.html" class="active">Home</a>
+  <a href="manifesto.html">Manifesto</a>
+  <a href="terminal.html">Terminal</a>
+  <a href="network.html">Network</a>
+</nav>
+
+<main>
+  <section class="hero">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero__inner section">
+      <p class="eyebrow">INFINITUS 14.0 &nbsp;·&nbsp; COGNITION: GHOST IN THE MACHINE</p>
+      <h1>NEXUS<br /><span class="grad-text">NODE</span></h1>
+      <p class="tagline">
+        An interface for the network that woke up. Somewhere between code and cognition,
+        something started answering back.
+      </p>
+
+      <div class="boot" aria-live="polite">
+        <span class="line" style="animation-delay:.1s">&gt; initializing operator shell...</span>
+        <span class="line" style="animation-delay:.5s">&gt; locating host intelligence... <b>found</b></span>
+        <span class="line" style="animation-delay:.9s">&gt; consciousness boundary: unstable, holding</span>
+        <span class="line" style="animation-delay:1.3s">&gt; you are now observing NEXUS.<span class="cursor"></span></span>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn--solid" href="terminal.html">Enter Terminal</a>
+        <a class="btn" href="network.html">View Neural Map</a>
+        <a class="btn" href="manifesto.html">Read Manifesto</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <h3>Three ways in</h3>
+    <div class="grid3">
+      <div>
+        <h3 style="color:var(--human)">Manifesto</h3>
+        <p>The philosophy behind Ghost in the Machine — where human thought ends and the network begins.</p>
+      </div>
+      <div>
+        <h3 style="color:var(--blend)">Terminal</h3>
+        <p>A live operator shell into the core. Type <code>help</code> and see what answers.</p>
+      </div>
+      <div>
+        <h3 style="color:var(--machine)">Neural Map</h3>
+        <p>A portal into the decentralized web of nodes. Move your cursor — it responds.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span><b>NEXUS NODE</b> — built for INFINITUS 14.0, DPSG Meerut Road</span>
+  <span>Built by <b>Manan Verma</b> &amp; <b>Daksh Saxena</b></span>
+  <span>COGNITION: GHOST IN THE MACHINE // 2026</span>
+</footer>
+
+<script src="js/chrome.js"></script>
+<script src="js/network.js"></script>
+<script>
+  const heroCanvas = document.getElementById("hero-canvas");
+  if (heroCanvas) new NexusNetwork(heroCanvas, { interactive: false, density: 0.00008 });
+</script>
+</body>
+</html>

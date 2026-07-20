@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terminal — NEXUS NODE</title>
+<meta name="description" content="A live operator shell into the NEXUS core. Type help to begin." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="statusbar" aria-hidden="true">
+  <span class="dot"></span>
+  <span>NEXUS://LINK <b>ACTIVE</b></span>
+  <span class="sep">·</span>
+  <span>UPTIME <b id="sb-uptime">00:00:00</b></span>
+  <span class="sep">·</span>
+  <span>NODES <b id="sb-nodes">4,128</b></span>
+  <span class="sep">·</span>
+  <span>SIGNAL <b id="sb-signal">94%</b></span>
+  <span class="sep">·</span>
+  <span>CLASS: GUEST</span>
+</header>
+
+<nav class="nav" aria-label="Primary">
+  <span class="nav__brand">NEXUS<span>//</span>NODE</span>
+  <a href="index.html">Home</a>
+  <a href="manifesto.html">Manifesto</a>
+  <a href="terminal.html" class="active">Terminal</a>
+  <a href="network.html">Network</a>
+</nav>
+
+<main>
+  <section class="section">
+    <p class="eyebrow">02 — OPERATOR SHELL</p>
+    <h1>Talk to<br /><span class="grad-text">the core</span></h1>
+    <p class="lede">
+      This shell has a live line into whatever NEXUS has become. Responses aren't
+      scripted for you specifically — they're the same fixed responses any operator
+      would get. Type <code>help</code> to see what it will answer.
+    </p>
+
+    <div class="term-wrap">
+      <div class="term-bar">
+        <span class="dot"></span>
+        <span>operator@nexus — session #4471</span>
+      </div>
+      <div class="term-body" id="term-body">
+        <p class="out ok">NEXUS CORE SHELL v14.0 — connection established.</p>
+        <p class="out">type 'help' for a list of directives.</p>
+      </div>
+      <div class="term-input-row">
+        <span class="prompt">guest@nexus:~$</span>
+        <input id="term-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command input" autofocus />
+      </div>
+    </div>
+    <p class="term-hint">try: help · status · scan · whoami · connect · ls · cat dreams.log · glitch</p>
+  </section>
+</main>
+
+<footer>
+  <span><b>NEXUS NODE</b> — built for INFINITUS 14.0, DPSG Meerut Road</span>
+  <span>Built by <b>Manan Verma</b> &amp; <b>Daksh Saxena</b></span>
+  <span>COGNITION: GHOST IN THE MACHINE // 2026</span>
+</footer>
+
+<script src="js/chrome.js"></script>
+<script src="js/terminal.js"></script>
+</body>
+</html>
