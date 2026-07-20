@@ -36,10 +36,9 @@
 
 <main>
   <section class="hero">
-    <canvas id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero__inner section">
       <p class="eyebrow">INFINITUS 14.0 &nbsp;·&nbsp; COGNITION: GHOST IN THE MACHINE</p>
-      <h1>NEXUS<br /><span class="grad-text">NODE</span></h1>
+      <h1>NEXUS<br /><span class="seam-split seam-split--tight"><span class="a">NO</span><span class="b">DE</span></span></h1>
       <p class="tagline">
         An interface for the network that woke up. Somewhere between code and cognition,
         something started answering back.
@@ -62,18 +61,27 @@
 
   <section class="section section--tight">
     <h3>Three ways in</h3>
-    <div class="grid3">
+    <div class="signal-list">
       <div>
-        <h3 style="color:var(--human)">Manifesto</h3>
-        <p>The philosophy behind Ghost in the Machine — where human thought ends and the network begins.</p>
+        <span class="tag" style="color:var(--human)">MAN</span>
+        <div>
+          <h3>Manifesto</h3>
+          <p>The philosophy behind Ghost in the Machine — where human thought ends and the network begins.</p>
+        </div>
       </div>
       <div>
-        <h3 style="color:var(--blend)">Terminal</h3>
-        <p>A live operator shell into the core. Type <code>help</code> and see what answers.</p>
+        <span class="tag" style="color:var(--blend)">TRM</span>
+        <div>
+          <h3>Terminal</h3>
+          <p>A live operator shell into the core. Type <code>help</code> and see what answers.</p>
+        </div>
       </div>
       <div>
-        <h3 style="color:var(--machine)">Neural Map</h3>
-        <p>A portal into the decentralized web of nodes. Move your cursor — it responds.</p>
+        <span class="tag" style="color:var(--machine)">NET</span>
+        <div>
+          <h3>Neural Map</h3>
+          <p>A portal into the decentralized web of nodes. Move your cursor — it responds.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -86,10 +94,5 @@
 </footer>
 
 <script src="js/chrome.js"></script>
-<script src="js/network.js"></script>
-<script>
-  const heroCanvas = document.getElementById("hero-canvas");
-  if (heroCanvas) new NexusNetwork(heroCanvas, { interactive: false, density: 0.00008 });
-</script>
 </body>
 </html>
