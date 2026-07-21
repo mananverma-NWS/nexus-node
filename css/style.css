@@ -22,6 +22,14 @@
   --status-h: 34px;
 }
 
+/* one interface, not four pages: the system chrome (status bar + nav)
+   morphs across navigations instead of flashing. progressive
+   enhancement — browsers without cross-document view transitions
+   just do a normal navigation, no fallback needed. */
+@view-transition{
+  navigation: auto;
+}
+
 *{ box-sizing: border-box; }
 
 html{
@@ -43,6 +51,11 @@ body{
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*){
+    animation: none !important;
   }
 }
 
@@ -90,6 +103,7 @@ a{ color: inherit; }
   color: var(--dim);
   white-space: nowrap;
   overflow-x: auto;
+  view-transition-name: nexus-statusbar;
 }
 .statusbar b{ color: var(--machine); font-weight: 500; }
 .statusbar .sep{ color: var(--dimmer); }
@@ -116,6 +130,7 @@ a{ color: inherit; }
   background: rgba(10,8,16,0.86);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--line);
+  view-transition-name: nexus-nav;
 }
 .nav__brand{
   font-family: var(--display);

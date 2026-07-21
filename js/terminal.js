@@ -38,11 +38,24 @@
           "  connect     attempt handshake with the core",
           "  ls          list residual memory files",
           "  cat <file>  read a memory file",
+          "  uptime      how long this session has been open",
+          "  history     recall recent commands",
           "  glitch      destabilize the interface",
           "  clear       wipe this session",
         ],
         "ok"
       );
+    },
+    uptime() {
+      const el = document.getElementById("sb-uptime");
+      print(el ? `session open ${el.textContent} — same clock as the status bar. it never stops.` : "uptime: unknown");
+    },
+    history() {
+      if (!commandHistory.length) {
+        print("no commands logged yet.");
+        return;
+      }
+      printLines(commandHistory.slice(-10).map((c, i) => `  ${i + 1}  ${c}`));
     },
     status() {
       printLines([
@@ -118,10 +131,17 @@
     },
   };
 
+  const commandHistory = [];
+  let historyIndex = 0;
+
   function handle(raw) {
     const trimmed = raw.trim();
     print(trimmed, "echo");
     if (!trimmed) return;
+    if (commandHistory[commandHistory.length - 1] !== trimmed) {
+      commandHistory.push(trimmed);
+    }
+    historyIndex = commandHistory.length;
     const [cmd, ...rest] = trimmed.split(/\s+/);
     const key = cmd.toLowerCase();
     if (COMMANDS[key]) {
@@ -136,6 +156,16 @@
       const val = input.value;
       input.value = "";
       handle(val);
+    } else if (e.key === "ArrowUp") {
+      if (!commandHistory.length) return;
+      e.preventDefault();
+      historyIndex = Math.max(0, historyIndex - 1);
+      input.value = commandHistory[historyIndex] || "";
+    } else if (e.key === "ArrowDown") {
+      if (!commandHistory.length) return;
+      e.preventDefault();
+      historyIndex = Math.min(commandHistory.length, historyIndex + 1);
+      input.value = commandHistory[historyIndex] || "";
     }
   });
 
